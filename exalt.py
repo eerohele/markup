@@ -63,7 +63,12 @@ def get_catalog_files():
     # spaces in them.
     catalog_urls = map(lambda file: file_to_uri(file), catalog_files)
 
-    return " ".join(catalog_urls)
+    # Merge with existing path's in environment
+    env_files = os.environ.get("XML_CATALOG_FILES")
+    env_files = env_files.split(' ') if env_files else []
+    env_files += [url for url in catalog_urls if url not in env_files]
+
+    return " ".join(env_files)
 
 
 def reload_settings():
