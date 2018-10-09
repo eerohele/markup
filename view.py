@@ -26,7 +26,7 @@ def get_syntax(view):
 
 
 def is_xml(view):
-    return get_syntax(view) in ["XML", "XHTML", "XSL", "XSLT"]
+    return get_syntax(view) in ["XML", "XHTML", "XSL", "XSLT", "PreTeXt"]
 
 
 def is_html(view):
